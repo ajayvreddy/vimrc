@@ -24,21 +24,19 @@ set guioptions -=L
 set guioptions -=e
 " set guioptions -=i  "; removes the vim logo(icon)
 
-set background=dark
 set background=light
 colorscheme solarized
 " colorscheme papercolor
 set lines=44 columns=999
 set guifont=DejaVu\ Sans\ Mono\ 13
 
-nnoremap <silent> <F2> :!perl -c %<CR>
 nnoremap <silent> <F5> :!py %<CR>
-nnoremap <F6> :!/tool/pandora64/.package/python-3.6.5/bin/flake8 --config /proj/shell_dev/users/ajareddy/mantis/_env/local/.flake8 %<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
 inoremap <silent> <C-s> <esc>:w!<cr>
 noremap  <silent> <C-s> <esc>:w!<cr>
 noremap  <silent> <C-w> <esc>:q!<cr>
+
 " page up/down
 map <space> <C-f>
 map <S-space> <C-b>
@@ -98,11 +96,9 @@ set whichwrap+=<,>,h,l
 
 set ignorecase
 set smartcase
-set hlsearch
-" highlight Search guibg=Red
+set hlsearch   " highlight Search guibg=Red
 set incsearch 
 set magic
-
 set lazyredraw  " Don't redraw while executing macros (good performance config)
 set sidescroll=1
 
@@ -129,7 +125,7 @@ nnoremap <A-x> <C-x>
 set nobackup
 set nowritebackup
 set noswapfile
-set nowrap "Wrap lines
+set nowrap
 set noshowmode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -164,17 +160,6 @@ map <leader>b obreakpoint()<esc>
 
 " Switch CWD to the directory of the open buffer
 map <silent> <leader>cd :cd %:p:h<cr>
-map <silent> <leader>kk :tabnew /proj/verif_release_ro/kx_core/current/bin/kxconfig_workhorse<cr>
-map <silent> <leader>ll :tabnew /proj/verif_release_ro/DatabaseKeywords/current/lib/perl/DatabaseKeywords.pm<cr>
-map <silent> <leader>cfg :new /proj/cb_verif_dev8/users/ajareddy/cfg.pl<cr>
-
-map <silent>;kx :cd /proj/shell_dev/users/ajareddy/kx_core <cr>
-map <silent>;dk :cd /proj/shell_dev/users/ajareddy/databaseKeywords <cr>
-map <silent>;sc :cd /proj/shell_dev/users/ajareddy/scratch <cr>
-map <silent>;tt :cd /proj/shell_dev/users/ajareddy/scratch/test <cr>
-map <silent>;mn :cd /proj/shell_dev/users/ajareddy/mantis  <cr>
-map <silent>;d8 :cd /proj/cb_verif_dev8/users/ajareddy/    <cr>
-map <silent>;ro :cd /proj/verif_release_ro/    <cr>
 map <silent>;wd :echo expand('%:p')<cr>
 
 " Specify the behavior when switching between buffers 
@@ -388,35 +373,6 @@ function Hex_64bit_binary(num, start_pos)
     endif
     return bin . ''
 endfunc
-" YouCompleteMe
-" set completeopt-=preview
-let g:ycm_disable_for_files_larger_than_kb = 0
-let g:ycm_complete_in_comments = 1
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_key_list_stop_completion = ['<right>', '<left>']
-" let g:ycm_goto_buffer_command = 'new-tab'
-let g:ycm_goto_buffer_command = 'same-buffer'
-let g:ycm_min_num_of_chars_for_completion = 4
-let g:ycm_auto_hover=''
-nmap <leader>a <plug>(YCMHover)
-let g:ycm_python_interpreter_path = '/tools/pandora64/.package/python-3.8.0/bin/python3.8'
-let g:ycm_python_sys_path = []
-let g:ycm_extra_conf_vim_data = [
-  \  'g:ycm_python_interpreter_path',
-  \  'g:ycm_python_sys_path'
-  \]
-let g:ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar': 1,
-      \ 'netrw': 1,
-      \ 'unite': 1,
-      \ 'pandoc': 1,
-      \ 'infolog': 1,
-      \ 'leaderf': 1,
-      \}
-let g:ycm_register_as_syntastic_checker = 0
-
 " NerdCommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -427,6 +383,7 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 map <silent> <C-c>  \c<space>
+
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:perforce_prompt_on_open = 0
